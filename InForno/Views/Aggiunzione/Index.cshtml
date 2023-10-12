@@ -1,0 +1,41 @@
+﻿@model IEnumerable<InForno.Models.Aggiunzione>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 class="text-center">Lista Aggiunzioni</h2>
+
+<div class="card">
+    <p>
+        @Html.ActionLink(" Crea", "Create","Aggiunzione", new {@class = "btn m-2 fa-solid fa-plus" })
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prezzo)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prezzo)
+                </td>
+                <td>
+                    @Html.ActionLink("Modifica", "Edit", new { id = item.IdAggiunzione }, new { @class = "btn fa-solid fa-pen m-2" })
+                    @Html.ActionLink("Cancella", "Delete", new { id = item.IdAggiunzione }, new { @class = "btn fa-solid fa-eraser" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

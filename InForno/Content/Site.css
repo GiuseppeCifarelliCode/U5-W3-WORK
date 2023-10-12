@@ -1,0 +1,44 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    margin-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+nav {
+    background-color: chocolate;
+}
+
+    nav a {
+        color: azure !important;
+    }
+
+        nav a:hover {
+            color: black !important;
+        }
+body {
+    background-image: url(./assets/bg.jpg);
+    backdrop-filter: contrast(0.3);
+}
+
+.card, .card th,.card td {
+    background-color: brown;
+    color: azure;
+}
+
+    .card input, .card a,.card button, .body-content input, .body-content a {
+        background-color: azure;
+        color: brown;
+    }
+
+        .card input:hover, .card a:hover, .card button:hover, .card select, .body-content input:hover, .body-content a:hover {
+            background-color: chocolate !important;
+            color: azure !important;
+        }
