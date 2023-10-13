@@ -56,10 +56,21 @@ namespace InForno.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Prodotto p)
+        public ActionResult Edit(Prodotto p, HttpPostedFileBase Foto)
         {
             if(ModelState.IsValid)
             {
+                if (Foto != null && Foto.ContentLength > 0)
+                {
+                    string nomeFile = Foto.FileName;
+                    string path = Path.Combine(Server.MapPath("~/Content/assets"), nomeFile);
+                    Foto.SaveAs(path);
+                    p.Foto = nomeFile;
+                }
+                else
+                {
+                    p.Foto = "";
+                }
                 db.Entry(p).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
