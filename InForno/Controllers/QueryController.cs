@@ -35,12 +35,10 @@ namespace InForno.Controllers
             return Json(formattedOrdini,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetTotGuadagnato()
+        public ActionResult GetTotGuadagnato(DateTime date)
         {
-            DateTime dataOdierna = DateTime.Today;
-            DateTime inizioDomani = dataOdierna.AddDays(1);
             List<Ordine> ordiniOggi = db.Ordine
-                .Where(x => x.Data >= dataOdierna && x.Data < inizioDomani && x.Concluso).ToList();
+                .Where(x => x.Data == date && x.Concluso).ToList();
             decimal tot = 0;
             foreach(Ordine o in ordiniOggi)
             {

@@ -11,7 +11,9 @@
             <button class="btn" id="ordiniEvasi">Visualizza gli ordini evasi</button>
         </div>
         <div class="col d-flex flex-column">
-            <button class="btn" id="GuadagnoGiornaliero">Visualizza il Totale Incassato Oggi</button>
+            <label for="date">Seleziona Data</label>
+            <input type="date" name="date" id="dateField" />
+            <button class="btn" id="GuadagnoGiornaliero">Visualizza il Totale Incassato alla Data selezionata</button>
         </div>
         <div class="col">
             <ul id="listaOrdiniEvasi"></ul>
@@ -45,12 +47,14 @@
 
             $("#GuadagnoGiornaliero").click(function () {
                 $("#totGuadagnato").empty();
+                var date = $("#dateField").val();
                 $.ajax({
                     method: 'GET',
                     url: "Query/GetTotGuadagnato",
+                    data: {date: date},
                     success: function (data) {
                         var licurrent = "<li>" +
-                            "Totale Guadagnato Oggi: $" + data +
+                            "Totale Guadagnato: $" + data +
                             "</li>";
                         $("#totGuadagnato").append(licurrent);
                     }
