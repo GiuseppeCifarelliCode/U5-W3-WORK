@@ -44,5 +44,13 @@ namespace InForno.Controllers
             Session["Carrello"] = carrello;
             return RedirectToAction("Index");
         }
+
+        public ActionResult Remove( int id)
+        {
+            List<Cart> carrello = Session["Carrello"] as List<Cart>;
+            carrello.RemoveAt(id);
+            Session["Carrello"] = carrello;
+            return RedirectToAction("Index");
+        }
     }
 }
